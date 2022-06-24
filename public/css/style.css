@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Bookman Old Style !important;
+}
+.header{
+  background-color: rgb(36, 0, 70);
+  padding: 20px;
+  box-shadow:0 0 0 10px rgba(152, 69, 230, 0.774);
+}
+.header h1{
+  text-align: center;
+  color: #fff;
+  font-size: 40px;
+}
+.stdnt-bio{
+  line-height: 13px;
+}
+.container-fluid{
+  padding: 30px 40px !important;
+}
+.card{
+  text-align: center;
+}
+.stdnt-img{
+  border-radius: 50%;
+}
+.card-img{
+  box-shadow: 0 0 10px rgba(152, 69, 230, 0.774);
+  border-radius: 50% !important;
+  width: 150px !important;
+  height: 150px !important;
+}
+.card{
+  border-color: rgb(36, 0, 70) !important;
+  box-shadow: 0 0 10px rgba(152, 69, 230, 0.774);
+}
+.card-header, .card-footer{
+  background-color: rgb(36, 0, 70) !important;
+  color: #fff;
+}
+.card-body .stdnt-bio{
+  color: rgb(36, 0, 70);
+  font-weight: 500;
+  text-align: left;
+  margin:20px 10px 0 0;
+}
+.card-footer .btn{
+  color: #fff;
+  opacity: 0.8;
+}
+.modal-form{
+  background-color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.modal-form.hidden{
+  display: none;
+}
