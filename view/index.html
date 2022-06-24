@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public/css/style.css" />
+    <link rel="stylesheet" href="../public/css/all.css" />
+    <link rel="stylesheet" href="../public/css/all.min.css  " />
+    <link rel="stylesheet" href="../public/css/bootstrap.css" />
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css" />
+    <script src="../public/js/all.js"></script>
+    <script src="../public/js/all.min.js"></script>
+    <script src="../public/js/bootstrap.js"></script>
+    <script src="../public/js/bootstrap.bundle.js"></script>
+    <script src="../public/js/jquery.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Students CRUD REST API (Front-end & Back-end)</h1>
+    </div>
+    <div class="container-fluid">
+      <div
+        class="s-header mb-5 mt-4 d-flex justify-content-between align-items-center"
+      >
+        <h1>All Students</h1>
+        <h1  onclick="document.querySelector('.modal-form').classList.remove('hidden')">
+          <button class="btn btn-info text-black-50">Add Student</button>
+        </h1>
+      </div>
+      <div class="row body"></div>
+    </div>
+    <div class="modal-form col-md-12 hidden">
+      <form
+        action="/addStudent"
+        method="POST"
+        enctype="application/x-www-form-urlencoded"
+        class="form col-md-4"
+      >
+        <div class="head d-flex justify-content-around">
+          <h2>Add Student</h2>
+          <h2 class="text-warning" style="cursor: pointer" onclick="document.querySelector('.modal-form').classList.add('hidden')">
+            <i class="fa fa-times"></i>
+          </h2>
+        </div>
+        <div class="form-group m-2">
+          <input
+            type="text"
+            class="form-control"
+            name="first_name"
+            placeholder="First Name..."
+          />
+        </div>
+
+        <div class="form-group m-2">
+          <input
+            type="text"
+            class="form-control"
+            name="last_name"
+            placeholder="Last Name..."
+          />
+        </div>
+
+        <div class="form-group m-2">
+          <input
+            type="text"
+            class="form-control"
+            name="email"
+            placeholder="Email..."
+          />
+        </div>
+
+        <div class="form-group m-2">
+          <input
+            type="text"
+            class="form-control"
+            name="gender"
+            placeholder="Gender..."
+          />
+        </div>
+
+        <div class="form-group m-2">
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            placeholder="Username..."
+          />
+        </div>
+
+        <div class="form-group m-2">
+          <input
+            type="text"
+            class="form-control"
+            name="class"
+            placeholder="Class..."
+          />
+        </div>
+
+        <div class="form-group m-2">
+          <input
+            type="text"
+            class="form-control"
+            name="img"
+            placeholder="Img Url..."
+          />
+        </div>
+
+        <div class="form-group m-2">
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            placeholder="Password..."
+          />
+        </div>
+
+        <div class="form-group m-2">
+          <input
+            type="text"
+            class="form-control"
+            name="phone_number"
+            placeholder="Phone Number..."
+          />
+        </div>
+        <button class="btn btn-info m-2" type="submit">Submit</button>
+      </form>
+    </div>
+    <script>
+      function dataAppend(obj) {
+        let htmlCode = `<div class="col-md-3 my-5">
+          <div class="card">
+            <div class="card-header">
+              <h3>${obj.first_name} ${obj.last_name}</h3>
+            </div>
+            <div class="card-body">
+              <div class="stdnt-img">
+                <img class="card-img" src="${obj.img}" alt="" />
+              </div>
+              <div class="stdnt-bio">
+                <p>${obj.username}</p>
+                <p>${obj.password}</p>
+                <p>${obj.email}</p>
+                <p>${obj.phone_number}</p>
+                <p>${obj.class}</p>
+                <p>${obj.gender}</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="btn-group">
+                <button class="btn btn-warning" onclick="window.location = 'editStudentOfID/${obj.id}'" id='${obj.id}'>Edit</button>
+                <button class="btn btn-danger" onclick="window.location = '/delete/Student/${obj.id}'" id='${obj.id}'>Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>`;
+        return htmlCode;
+      }
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "/json", true);
+      xhr.onload = function () {
+        let data = JSON.parse(this.responseText);
+        for (i in data) {
+          $(".body").append(dataAppend(data[i]));
+        }
+      };
+      xhr.send();
+    </script>
+  </body>
+</html>
