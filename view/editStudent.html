@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public/css/style.css" />
+    <link rel="stylesheet" href="../public/css/all.css" />
+    <link rel="stylesheet" href="../public/css/all.min.css  " />
+    <link rel="stylesheet" href="../public/css/bootstrap.css" />
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css" />
+    <script src="../public/js/all.js"></script>
+    <script src="../public/js/all.min.js"></script>
+    <script src="../public/js/bootstrap.js"></script>
+    <script src="../public/js/bootstrap.bundle.js"></script>
+    <script src="../public/js/jquery.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container p-5 align-items-center">
+      <h1>Edit Student</h1>
+
+      <div class="body"></div>
+    </div>
+    <script>
+      let id = window.location.pathname[window.location.pathname.length - 1];
+      function dataAppend(obj) {
+        let htmlCode = `<form
+    action="/editStudent/${obj.id}"
+    method="POST"
+    enctype="application/x-www-form-urlencoded"
+    class="form col-md-6"
+  >
+    <div class="form-group m-2">
+      <input
+        type="text"
+        class="form-control"
+        name="first_name"
+        value="${obj.first_name}"
+        placeholder="First Name..."
+      />
+    </div>
+
+    <div class="form-group m-2">
+      <input
+        type="text"
+        class="form-control"
+        name="last_name"
+        value="${obj.last_name}"
+        placeholder="Last Name..."
+      />
+    </div>
+
+    <div class="form-group m-2">
+      <input
+        type="text"
+        class="form-control"
+        name="email"
+        value="${obj.email}"
+        placeholder="Email..."
+      />
+    </div>
+
+    <div class="form-group m-2">
+      <input
+        type="text"
+        class="form-control"
+        name="gender"
+        value="${obj.gender}"
+        placeholder="Gender..."
+      />
+    </div>
+
+    <div class="form-group m-2">
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        value="${obj.username}"
+        placeholder="Username..."
+      />
+    </div>
+
+    <div class="form-group m-2">
+      <input
+        type="text"
+        class="form-control"
+        name="class"
+        value="${obj.class}"
+        placeholder="Class..."
+      />
+    </div>
+
+    <div class="form-group m-2">
+      <input
+        type="text"
+        class="form-control"
+        name="img"
+        value="${obj.img}"
+        placeholder="Img Url..."
+      />
+    </div>
+
+    <div class="form-group m-2">
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        value="${obj.password}"
+        placeholder="Password..."
+      />
+    </div>
+
+    <div class="form-group m-2">
+      <input
+        type="text"
+        class="form-control"
+        name="phone_number"
+        value="${obj.phone_number}"
+        placeholder="Phone Number..."
+      />
+    </div>
+    <button class="btn btn-info m-2" type="submit">Submit</button>
+  </form>`;
+        return htmlCode;
+      }
+      // id = Number.parseInt(id);
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "/json/" + id, true);
+      xhr.onload = function () {
+        let data = JSON.parse(this.responseText);
+        // console.log((data));
+        $(".body").append(dataAppend(data));
+      };
+      xhr.send();
+    </script>
+  </body>
+</html>
